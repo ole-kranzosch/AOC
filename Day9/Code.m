@@ -1,6 +1,5 @@
 clear;
 %% Read input
-tic
 inp = readlines("Input9.txt");
 inp_mat = char(inp) - '0';
 N = sum(inp_mat);
@@ -24,8 +23,6 @@ overhang = expanded_disk(compressed_size+1:end);
 compressed_disk(isnan(expanded_disk(1:compressed_size))) = flip(overhang(~isnan(overhang)));
 checksum = compressed_disk*((1:compressed_size)'-1);
 sprintf('%16.f',checksum)
-toc
-tic
 %%%%%%% Part 2
 free_space_sizes = inp_mat(2:2:end);
 IDs = flip(1:((IDs+1)/2))-1;
@@ -46,4 +43,3 @@ disk = expanded_disk;
 disk(isnan(disk)) = 0;
 checksum = disk*((1:numel(disk))'-1);
 sprintf('%16.f',checksum)
-toc
