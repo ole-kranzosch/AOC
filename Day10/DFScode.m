@@ -61,10 +61,12 @@ end
 disp(trailhead_sum)
 
 %%% PART 2
-end_nodes = find(inp_mat==9);
-M = numel(end_nodes);
 trailhead_sum = 0;
 for i=1:N
+    connect_nodes = dfsearch(g,start_nodes(i));
+    end_nodes = find(inp_mat==9);
+    end_nodes = intersect(end_nodes,connect_nodes);
+    M = numel(end_nodes);
     for j = 1:M
         paths = allpaths(g,start_nodes(i),end_nodes(j));
         trailhead = size(paths,1);
